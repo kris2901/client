@@ -240,7 +240,10 @@ public class AssignPupilToClassController implements IController
 		if ((pupilFLAG == 1) && (classFLAG == 1) && (classID.equals(currClassID)) && (pupilID.equals(currPupilID)))
 		{
 			CheackIfPupilAlreadyAssignedToClass();
+			if(Assigned==0)
+			{
 			loadCoursesInClass();
+			}
 		}
 		else
 		{
@@ -430,91 +433,6 @@ public class AssignPupilToClassController implements IController
 	}
 
 	/**
-	 * Upload list of old class.
-	 */
-	void UploadListOfOldClass()
-	{
-		ArrayList<String> data = new ArrayList<String>();
-		data.add("load Courses of old class");
-		data.add("select");
-		data.add("course_in_class");
-		data.add("classId");
-		data.add(OldClassID);
-		try
-		{
-			Main.client.sendToServer(data);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Delete pupil in course.
-	 */
-	void deletePupilInCourse()
-	{
-		for (int i = 0; i < OldCoursesID.size(); i++)
-		{
-			ArrayList<String> data = new ArrayList<String>();
-			data.add("Delete Pupil From Courses");
-			data.add("delete");
-			data.add("pupil_in_course");
-			data.add("userID");
-			data.add(pupilID);
-			data.add("courseID");
-			data.add(OldCoursesID.get(i));
-			data.add("gradeInCourse");
-			data.add("0");
-
-			try
-			{
-				Main.client.sendToServer(data);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-
-		updateAssignedPupilsInOldClass();
-	}
-
-	/**
-	 * Update assigned pupils in old class.
-	 */
-	void updateAssignedPupilsInOldClass()
-	{
-		int num = Integer.parseInt(OldClassAssignedPupils);
-		num = num - 1;
-		OldClassAssignedPupils = Integer.toString(num);
-
-		ArrayList<String> data = new ArrayList<String>();
-		data.add("Update Assigned Pupils In Old Class");
-		data.add("update");
-		data.add("class");
-		data.add("AssignedPupils");
-		data.add(OldClassAssignedPupils);
-		data.add("conditions");
-		data.add("classId");
-		data.add(OldClassID);
-
-		try
-		{
-			Main.client.sendToServer(data);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		updateAssignedPupilsInClass();
-		InsertPupilInCourse();
-		new Alert(AlertType.INFORMATION, "PUPIL ADD SUCCESFULLY TO CLASS.", ButtonType.OK).showAndWait();
-	}
-
-	/**
 	 * Update assigned pupils in class.
 	 */
 	void updateAssignedPupilsInClass()
@@ -532,28 +450,6 @@ public class AssignPupilToClassController implements IController
 		data.add("conditions");
 		data.add("classId");
 		data.add(classID);
-
-		try
-		{
-			Main.client.sendToServer(data);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Loading assigned pupil to old class.
-	 */
-	void loadAssignedPupilToOldClass()
-	{
-		ArrayList<String> data = new ArrayList<String>();
-		data.add("load Assaigned From Old Class");
-		data.add("select");
-		data.add("class");
-		data.add("classId");
-		data.add(OldClassID);
 
 		try
 		{
@@ -658,8 +554,6 @@ public class AssignPupilToClassController implements IController
 					}
 					classID = map.get("classId");
 					AssignedPupils = map.get("AssignedPupils");
-					//OldClassID=map.get("classId");
-					//OldClassAssignedPupils=map.get("AssignedPupils");
 				}
 				classFLAG = 1;
 				new Alert(AlertType.INFORMATION, "Class has found.", ButtonType.OK).showAndWait();
@@ -670,22 +564,9 @@ public class AssignPupilToClassController implements IController
 		{
 			if (arr.size() != 0)
 			{
-				for (String row : arr)
-				{
-					String[] cols = row.split(";");
-					HashMap<String, String> map = new HashMap<>();
-					for (String col : cols)
-					{
-						String[] field = col.split("=");
-						map.put(field[0], field[1]);
-					}
-					OldClassID = map.get("class_ID");
-				}
-				Assigned = 1;
-				loadAssignedPupilToOldClass();
-				new Alert(AlertType.INFORMATION, "Pay Attention-Pupil Already Assigned To Class.", ButtonType.OK)
+				Assigned=1;
+				new Alert(AlertType.ERROR, "Pupil alrady asiigned to class.", ButtonType.OK)
 						.showAndWait();
-
 			}
 		}
 
@@ -771,15 +652,12 @@ public class AssignPupilToClassController implements IController
 				new Alert(AlertType.ERROR, "Pupil has not pre-courses for this class.", ButtonType.OK).showAndWait();
 			}
 		}
+		
 		if (type.equals("Assign Pupil To Class"))
 		{
-			if (Assigned == 1)
-				return;
 			updateAssignedPupilsInClass();
 			InsertPupilInCourse();
-			new Alert(AlertType.INFORMATION, "PUPIL ADD SUCCESFULLY TO CLASS.", ButtonType.OK).showAndWait();
-			//ñâéøú çìåïïïïïïïïïïïïïïïïïïï
-
+			new Alert(AlertType.INFORMATION, "Pupil add successfully to class.", ButtonType.OK).showAndWait();
 		}
 
 		if (type.equals("Check Class Capacity"))
@@ -799,22 +677,21 @@ public class AssignPupilToClassController implements IController
 				int num = Integer.parseInt(capacity) - Integer.parseInt(AssignedPupils);
 				if (num == 0)
 					new Alert(AlertType.ERROR, "This Class Is Already Full", ButtonType.OK).showAndWait();
-				else if (Assigned == 0)
+				else
 				{
 					InsertPupilToClass();
 				}
-				else
-					UpdateClass();
+
 			}
 		}
 
-		if (type.equals("UpdateClass"))
+	/*	if (type.equals("UpdateClass"))
 		{
 			//InsertPupilInCourse();
 			UploadListOfOldClass();
-		}
+		}*/
 
-		if (type.equals("load Courses of old class"))
+	/*	if (type.equals("load Courses of old class"))
 		{
 			for (String row : arr)
 			{
@@ -828,9 +705,9 @@ public class AssignPupilToClassController implements IController
 				OldCoursesID.add(map.get("courseId"));
 			}
 			deletePupilInCourse();
-		}
+		}*/
 
-		if (type.equals("load Assaigned From Old Class"))
+	/*	if (type.equals("load Assaigned From Old Class"))
 		{
 			for (String row : arr)
 			{
@@ -843,7 +720,7 @@ public class AssignPupilToClassController implements IController
 				}
 				OldClassAssignedPupils = map.get("AssignedPupils");
 			}
-		}
+		}*/
 
 	}
 }
