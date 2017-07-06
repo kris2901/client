@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="583.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DefineAssignmentController">
+   <children>
+      <Label fx:id="DefineAssignmentLabel" contentDisplay="CENTER" layoutX="23.0" layoutY="33.0" prefHeight="66.0" prefWidth="525.0" text="Define Assignment Window" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="EnterClassIdLabel" layoutX="37.0" layoutY="210.0" text="Enter Course ID For This Assignment: " />
+      <TextField fx:id="EnterClassIDTextField" layoutX="32.0" layoutY="252.0" onAction="#EnterClassID" />
+      <Label fx:id="EnterDueDateLabel" layoutX="37.0" layoutY="300.0" text="Enter Due Date:" />
+      <DatePicker fx:id="DueDatePicker" layoutX="32.0" layoutY="329.0" onAction="#EnterDueDate" />
+      <Button fx:id="DefineAssignmentButton" layoutX="213.0" layoutY="441.0" mnemonicParsing="false" onAction="#DefineAssignment" text="Define Assignment" />
+      <Button fx:id="BackButton" layoutX="229.0" layoutY="502.0" mnemonicParsing="false" onAction="#BackToMenu" text="Back To Menu" />
+      <Hyperlink fx:id="UploadFileHyperLink" layoutX="23.0" layoutY="394.0" onAction="#ChooseFileToUpload" prefHeight="31.0" prefWidth="433.0" text="Upload Assignment (Only .txt, .pdf, .docx formats are permitted)" />
+      <TextField fx:id="EnterAssNameTF" layoutX="32.0" layoutY="154.0" onAction="#EnterAssName" />
+      <Label fx:id="EnterASS" layoutX="32.0" layoutY="114.0" prefHeight="21.0" prefWidth="163.0" text="Assignment Name" />
+      <ProgressIndicator fx:id="pbProgress" layoutX="475.0" layoutY="384.0" progress="0.0" />
+   </children>
+</AnchorPane>

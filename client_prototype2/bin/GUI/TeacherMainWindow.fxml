@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="297.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherMainWindowController">
+   <children>
+      <Label fx:id="TeacherMainLable" alignment="CENTER" contentDisplay="CENTER" layoutY="43.0" prefHeight="67.0" prefWidth="512.0" text="Teacher Main Window" underline="true">
+         <font>
+            <Font name="Arial Black" size="36.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="TeacherMenuButton" layoutX="111.0" layoutY="160.0" mnemonicParsing="false" onAction="#TeacherChooseOperation" prefHeight="42.0" prefWidth="260.0" text="Choose">
+        <items>
+          <MenuItem fx:id="DefineAssignment" mnemonicParsing="false" onAction="#DefineAssignmentWindow" onMenuValidation="#Define" text="Define Assignment" />
+          <MenuItem fx:id="EvaluationForm" mnemonicParsing="false" onAction="#EvaluationFormWindow" text="Create Evaluation Form" />
+            <MenuItem fx:id="checkAssMenuItem" mnemonicParsing="false" onAction="#checkAss" text="Check Assignments Of Pupils" />
+        </items>
+      </MenuButton>
+      <Label fx:id="TeacherChooseLable" layoutX="170.0" layoutY="121.0" prefHeight="21.0" prefWidth="173.0" text="Choose Your Operation:" />
+      <Button fx:id="LogOutButton" layoutX="212.0" layoutY="225.0" mnemonicParsing="false" onAction="#LogOutTeacher" text="Log Out" />
+   </children>
+</AnchorPane>

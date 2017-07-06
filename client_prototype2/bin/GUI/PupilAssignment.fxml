@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PupilAssignmentController">
+   <children>
+      <Button fx:id="UploadButton" layoutX="78.0" layoutY="436.0" mnemonicParsing="false" onAction="#UploadSolutionFile" prefHeight="33.0" prefWidth="102.0" text="Upload File" />
+      <Label alignment="CENTER" layoutX="-10.0" prefHeight="77.0" prefWidth="884.0" text="Pupil Assignment Solution Upload" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="AssignmentTextField" layoutX="35.0" layoutY="194.0" prefHeight="21.0" prefWidth="242.0" text="Choose Assignment From The List: " />
+      <Label fx:id="UploadTextField" layoutX="34.0" layoutY="300.0" prefHeight="21.0" prefWidth="208.0" text="Upload Assignment Solution:" />
+      <ProgressIndicator fx:id="ProgressUpload" layoutX="171.0" layoutY="341.0" prefHeight="63.0" prefWidth="71.0" progress="0.0" />
+      <Label fx:id="CourseTextField" layoutX="34.0" layoutY="109.0" prefHeight="21.0" prefWidth="208.0" text="Choose Course From The List:" />
+      <Hyperlink fx:id="FileHyperLink" layoutX="38.0" layoutY="358.0" onAction="#ChooseSolutionFile" prefHeight="29.0" prefWidth="102.0" text="Choose File" />
+      <Button fx:id="BackButton" layoutX="672.0" layoutY="436.0" mnemonicParsing="false" onAction="#BackToPupilMenu" prefHeight="33.0" prefWidth="123.0" text="Back To Menu" />
+      <ComboBox fx:id="chooseCourseCB" layoutX="38.0" layoutY="138.0" onAction="#chooseCourse" prefHeight="33.0" prefWidth="200.0" promptText="Choose:" />
+      <ComboBox fx:id="chooseAssCB" layoutX="38.0" layoutY="226.0" onAction="#chooseAss" prefHeight="33.0" prefWidth="200.0" promptText="Choose:" />
+   </children>
+</AnchorPane>

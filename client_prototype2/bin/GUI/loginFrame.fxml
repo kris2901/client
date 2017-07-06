@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="358.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserController">
+   <children>
+      <TextField fx:id="userIdTextField" layoutX="163.0" layoutY="133.0" />
+      <Label layoutX="73.0" layoutY="138.0" text="User ID:" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
+      <Label layoutX="66.0" layoutY="223.0" text="Password:" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
+      <Button fx:id="loginBtn" layoutX="183.0" layoutY="285.0" mnemonicParsing="false" onAction="#login" text="Log In" />
+      <Label fx:id="AISFHSlable" contentDisplay="CENTER" graphicTextGap="5.0" text="Academic Information System For High School">
+         <font>
+            <Font name="BN United" size="48.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.5533980582524272">
+               <stops>
+                  <Stop color="#3b81cd" />
+                  <Stop color="#ae5bdd" offset="0.38888888888888895" />
+                  <Stop color="#7067dd" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="ASHlable" layoutX="513.0" layoutY="54.0" text="A.S.H" underline="true">
+         <font>
+            <Font name="BN United" size="96.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" cycleMethod="REFLECT" focusDistance="-0.04878048780487809" radius="0.7317073170731707">
+               <stops>
+                  <Stop color="#3b81cd" />
+                  <Stop color="#ae5bdd" offset="0.38888888888888895" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <PasswordField fx:id="passwordTextField" layoutX="163.0" layoutY="221.0" />
+      <Button fx:id="setBTN" layoutX="37.0" layoutY="285.0" mnemonicParsing="false" onAction="#openSet" text="Server Settings" />
+   </children>
+</AnchorPane>

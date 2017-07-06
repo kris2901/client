@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="528.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateEvaluationFormController">
+   <children>
+      <Label fx:id="EvaluationFormWindowLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="37.0" prefHeight="80.0" prefWidth="563.0" text="Evaluation Form Window" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="42.0" />
+         </font>
+      </Label>
+      <Label fx:id="PupilLabel" layoutX="33.0" layoutY="195.0" text="Choose Pupil:" />
+      <Label fx:id="GradeLabel" layoutX="36.0" layoutY="253.0" text="Enter Grade:" />
+      <TextField fx:id="PupilGradeTextLabel" layoutX="132.0" layoutY="249.0" onAction="#EnterPupilGrade" prefHeight="25.0" prefWidth="51.0" />
+      <Label fx:id="CommentsLabel" layoutX="33.0" layoutY="297.0" text="Comments:" />
+      <TextArea fx:id="CommentsTextArea" layoutX="33.0" layoutY="332.0" prefHeight="170.0" prefWidth="328.0" />
+      <Button fx:id="CreateEvaluationFormButton" layoutX="399.0" layoutY="385.0" mnemonicParsing="false" onAction="#CreateEvaluationForm" text="Create Evaluation Form" />
+      <Button fx:id="BackButton" layoutX="422.0" layoutY="429.0" mnemonicParsing="false" onAction="#BackToMenu" text="Back To Menu" />
+      <ComboBox fx:id="chooseCourseCB" layoutX="150.0" layoutY="136.0" onAction="#chooseCourse" prefWidth="150.0" />
+      <Label fx:id="CourseLabel" layoutX="36.0" layoutY="141.0" text="Choose Course:" />
+      <ComboBox fx:id="choosePupilCB" layoutX="132.0" layoutY="191.0" onAction="#choosePupil" prefWidth="150.0" />
+   </children>
+</AnchorPane>

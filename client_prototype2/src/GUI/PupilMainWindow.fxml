@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="304.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PupilMainWindow">
+   <children>
+      <Label fx:id="PupilMenuLable" layoutX="57.0" layoutY="22.0" text="Pupil Main" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="ChooseMenuButton" layoutX="74.0" layoutY="152.0" mnemonicParsing="false" onAction="#PupilChooseOperation" prefHeight="46.0" prefWidth="220.0" text="Choose">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#uploadAss" text="Upload Assignment Solution" />
+          <MenuItem mnemonicParsing="false" onAction="#openPupilFile" text="Open Pupil File" />
+            <MenuItem fx:id="DownLoadAssMenu" mnemonicParsing="false" onAction="#DownLoadAss" text="Download Assignments" />
+        </items>
+      </MenuButton>
+      <Label fx:id="ChooseOperationLable" layoutX="104.0" layoutY="115.0" text="Choose Your Operation:" />
+      <Button fx:id="LogOutButton" layoutX="147.0" layoutY="249.0" mnemonicParsing="false" onAction="#PupilLogOut" text="Log Out" />
+   </children>
+</AnchorPane>

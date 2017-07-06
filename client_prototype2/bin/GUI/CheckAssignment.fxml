@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="509.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherDownloadSolutionController">
+   <children>
+      <Label fx:id="CheckPupilAssignment" layoutY="14.0" text="Check Pupil Assignment Solution" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="34.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="ChooseCourseCB" layoutX="43.0" layoutY="117.0" onAction="#ChooseCourse" prefHeight="35.0" prefWidth="239.0" promptText="Choose Course:" />
+      <ComboBox fx:id="ChooseAssignmentCB" layoutX="43.0" layoutY="201.0" onAction="#ChooseAssignment" prefHeight="35.0" prefWidth="239.0" promptText="Choose Assignment:" />
+      <Button fx:id="DownloadButton" layoutX="43.0" layoutY="369.0" mnemonicParsing="false" onAction="#DownloadSolution" prefHeight="41.0" prefWidth="282.0" text="Download Solution Of Selected Pupil" />
+      <Button fx:id="BackToMenuButton" layoutX="437.0" layoutY="439.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="41.0" prefWidth="141.0" text="Back To Menu" />
+      <ComboBox fx:id="ChoosePupilCB" layoutX="43.0" layoutY="287.0" onAction="#ChoosePupil" prefHeight="35.0" prefWidth="239.0" promptText="Choose Pupil:" />
+      <Label fx:id="CourseLabel" layoutX="34.0" layoutY="81.0" prefHeight="21.0" prefWidth="228.0" text="Choose Course ID From The List:" />
+      <Label fx:id="AssignmentLabel" layoutX="34.0" layoutY="168.0" text="Choose Assignment Of Selected Course ID From The List:" />
+      <Label fx:id="PupilLabel" layoutX="34.0" layoutY="253.0" text="Choose Pupil ID From The List:" />
+      <Hyperlink fx:id="UploadHyperLink" layoutX="43.0" layoutY="444.0" onAction="#UploadSolutionWithComments" prefHeight="29.0" prefWidth="337.0" text="Upload Pupil Solution With Grades &amp; Comments" />
+      <ProgressIndicator fx:id="ProgressDownload" layoutX="344.0" layoutY="364.0" progress="0.0" />
+      <ProgressIndicator fx:id="ProgressUpload" layoutX="387.0" layoutY="433.0" progress="0.0" />
+   </children>
+</AnchorPane>

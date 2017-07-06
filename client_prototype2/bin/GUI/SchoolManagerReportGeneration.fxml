@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="266.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportGenerationController">
+   <children>
+      <Label fx:id="ReportWindowLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="59.0" prefWidth="447.0" text="Reports Window" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button fx:id="BackButton" layoutX="57.0" layoutY="195.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="40.0" prefWidth="148.0" text="Back To Menu" />
+      <MenuButton fx:id="ReportMenuButton" layoutX="57.0" layoutY="131.0" mnemonicParsing="false" onAction="#ChooseReport" prefHeight="40.0" prefWidth="195.0" text="Choose Report:">
+        <items>
+          <MenuItem fx:id="BetweenClasses" mnemonicParsing="false" onAction="#ClassesOfTeacher" text="Report Between Classes Of Specific Teacher" />
+          <MenuItem fx:id="BetweenCourses" mnemonicParsing="false" onAction="#CoursesInClass" text="Report Between Different Courses Of Specific Class" />
+            <MenuItem fx:id="BetweenTeachers" mnemonicParsing="false" onAction="#TeachersInClass" text="Report Between Teachers Of Specific Class" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="772.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportBetweenCoursesController">
+   <children>
+      <Label fx:id="ReportLabel1" layoutX="108.0" layoutY="29.0" text="Report Between Differnt Courses " underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="ReportLabel2" layoutX="262.0" layoutY="78.0" text="Of Specific Class" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="35.0" />
+         </font>
+      </Label>
+      <BarChart fx:id="ReportChart" layoutX="20.0" layoutY="309.0" prefHeight="467.0" prefWidth="628.0">
+        <xAxis>
+          <CategoryAxis fx:id="SpecificClassAxis" label="Spesific Class" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="DifferentCoursesAxis" label="Different Courses In Class" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button fx:id="BackButton" layoutX="712.0" layoutY="682.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="30.0" prefWidth="120.0" text="Back To Menu" />
+      <ComboBox fx:id="ChooseComboBox" layoutX="41.0" layoutY="180.0" onAction="#ChooseClass" prefHeight="30.0" prefWidth="159.0" promptText="Choose:" />
+      <Label fx:id="ChooseLabel" layoutX="41.0" layoutY="151.0" text="Choose Class ID From The List Below:" />
+      <TextField fx:id="SemesterTextField" layoutX="41.0" layoutY="265.0" prefHeight="30.0" prefWidth="411.0" />
+      <Label fx:id="SemesterLabel" layoutX="40.0" layoutY="238.0" text="Enter 4 Semesters ID Seperated By ( ):" />
+      <Button fx:id="CheckSemesterButton" layoutX="498.0" layoutY="265.0" mnemonicParsing="false" onAction="#CheckSemesterID" prefHeight="30.0" prefWidth="138.0" text="Check Semester ID" />
+      <Button fx:id="DisplayButton" layoutX="712.0" layoutY="634.0" mnemonicParsing="false" onAction="#DisplayChart" prefHeight="30.0" prefWidth="120.0" text="Display Chart" />
+   </children>
+</AnchorPane>

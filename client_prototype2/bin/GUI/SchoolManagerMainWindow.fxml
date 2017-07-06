@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="287.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SchoolManagerMainWindowController">
+   <children>
+      <Label fx:id="SchoolManagerMenuLabel" alignment="CENTER" layoutX="5.0" layoutY="29.0" prefHeight="37.0" prefWidth="354.0" text="School Manager Menu" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="ChooseOperationLabel" layoutX="120.0" layoutY="90.0" text="Choose your Operation" />
+      <MenuButton fx:id="MenuButton" layoutX="117.0" layoutY="131.0" mnemonicParsing="false" onAction="#SchoolManagerMenu" prefHeight="26.0" prefWidth="131.0" text="Choose">
+        <items>
+          <MenuItem fx:id="BlockUserMenuItem" mnemonicParsing="false" onAction="#BlockUser" onMenuValidation="#BlockWindowOperation" text="Block User" />
+          <MenuItem fx:id="ReportGenarationMenuItem" mnemonicParsing="false" onAction="#ReportGeneration" onMenuValidation="#ReportGenerationOperation" text="Report Genaration" />
+            <MenuItem fx:id="HandlingExeptionalRequestMenuItem" mnemonicParsing="false" onAction="#HandlingExeptionalRequest" onMenuValidation="#HandlingExeptionalRequestOperation" text="Handling Exeptional Request" />
+            <MenuItem fx:id="ViewSystemData" mnemonicParsing="false" onAction="#ViewAllData" text="View All System Data" />
+        </items>
+      </MenuButton>
+      <Button fx:id="LogOutButton" layoutX="145.0" layoutY="199.0" mnemonicParsing="false" onAction="#SchoolManagerLogOut" text="Log Out" />
+   </children>
+</AnchorPane>

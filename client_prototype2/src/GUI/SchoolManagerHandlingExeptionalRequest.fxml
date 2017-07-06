@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="503.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HandlingExeptionalRequestController">
+   <children>
+      <Label fx:id="HandleExeptionalRequestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="26.0" prefHeight="42.0" prefWidth="560.0" text="Handle Exceptional Request" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="35.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="ExeptionalRequstBox" layoutX="63.0" layoutY="104.0" onAction="#ChooseExeptionalRequst" prefHeight="42.0" prefWidth="529.0" promptText="Choose Exceptional Request:" />
+      <MenuButton fx:id="DecisionMenu" layoutX="61.0" layoutY="186.0" mnemonicParsing="false" onAction="#ChooseDecision" prefHeight="42.0" prefWidth="529.0" text="Choose decision:">
+        <items>
+          <MenuItem fx:id="ConformMenuItem" mnemonicParsing="false" onAction="#ConformExeptionalRequest" onMenuValidation="#Confirm" text="confirm" />
+          <MenuItem fx:id="DenyMenuItem" mnemonicParsing="false" onAction="#DenyExeptionalRequest" onMenuValidation="#Deny" text="deny" />
+        </items>
+      </MenuButton>
+      <Label fx:id="CommentsLabel" layoutX="63.0" layoutY="277.0" text="Comments:" />
+      <Button fx:id="SendAnswarButton" layoutX="475.0" layoutY="337.0" mnemonicParsing="false" onAction="#SendAnswar" prefHeight="42.0" prefWidth="114.0" text="Send" />
+      <Button fx:id="BackButton" layoutX="475.0" layoutY="406.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="42.0" prefWidth="114.0" text="Back To Menu" />
+      <TextField fx:id="commentTF" layoutX="63.0" layoutY="313.0" onAction="#commentTextField" prefHeight="146.0" prefWidth="353.0" />
+   </children>
+</AnchorPane>

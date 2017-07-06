@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="541.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PupilShowEvaluationFormController">
+   <children>
+      <Label fx:id="FormMenuLabel" layoutX="14.0" layoutY="14.0" text="Pupil Evaluation Form Window" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="CommentsLabel" layoutX="51.0" layoutY="99.0" text="Teacher Comments For You:" />
+      <Label fx:id="FinalGradeLabel" layoutX="51.0" layoutY="488.0" text="Your Final Grade:" />
+      <TextField fx:id="FinalGradeTextField" layoutX="193.0" layoutY="480.0" onAction="#PupilFinalGrade" prefHeight="38.0" prefWidth="62.0" />
+      <Button fx:id="BackButton" layoutX="627.0" layoutY="480.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="38.0" prefWidth="148.0" text="Back To Menu" />
+      <TextArea fx:id="CommentsTextArea" layoutX="51.0" layoutY="135.0" prefHeight="321.0" prefWidth="331.0" />
+   </children>
+</AnchorPane>

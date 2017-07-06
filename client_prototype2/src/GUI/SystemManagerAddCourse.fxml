@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCourseController">
+   <children>
+      <Label fx:id="idLbl" layoutX="54.0" layoutY="104.0" text="Enter Course ID:" />
+      <Label fx:id="courseNameLbl" layoutX="54.0" layoutY="155.0" text="Enter Course Name:" />
+      <Label fx:id="hoursLbl" layoutX="52.0" layoutY="201.0" text="Weekly Study Hours:" />
+      <Label fx:id="sUnitLbl" layoutX="53.0" layoutY="247.0" text="Enter Study Unit" />
+      <TextField fx:id="idTxt" layoutX="193.0" layoutY="100.0" />
+      <TextField fx:id="nameTxt" layoutX="193.0" layoutY="151.0" />
+      <TextField fx:id="hoursTxt" layoutX="193.0" layoutY="197.0" />
+      <TextField fx:id="unitTxt" layoutX="193.0" layoutY="243.0" />
+      <Button fx:id="addBtn" layoutX="189.0" layoutY="321.0" mnemonicParsing="false" onAction="#addCourse" text="Add course To The System" />
+      <Button fx:id="cancelBtn" layoutX="392.0" layoutY="321.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+      <Label fx:id="OpenLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="14.0" prefHeight="50.0" prefWidth="366.0" text="Open New Course" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="35.0" />
+         </font>
+      </Label>
+      <Button fx:id="CheckStudyUnitBTN" layoutX="386.0" layoutY="243.0" mnemonicParsing="false" onAction="#CheckStudyUnit" text="Check " />
+      <Button fx:id="checkHoursBTN" layoutX="386.0" layoutY="197.0" mnemonicParsing="false" onAction="#checkHours" text="Check " />
+      <Button fx:id="checkCourseNameBTN" layoutX="386.0" layoutY="151.0" mnemonicParsing="false" onAction="#checkCourseName" text="Check Availbility" />
+      <Button fx:id="checkCourseIDBTN" layoutX="387.0" layoutY="100.0" mnemonicParsing="false" onAction="#checkCourseID" text="Check Availbility" />
+   </children>
+</AnchorPane>

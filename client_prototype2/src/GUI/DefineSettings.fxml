@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="240.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DefineSettingsController">
+   <children>
+      <Label fx:id="IPlabel" layoutX="85.0" layoutY="84.0" prefHeight="30.0" prefWidth="90.0" text="Enter IP: " underline="true">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="portLabel" layoutX="85.0" layoutY="127.0" prefHeight="30.0" prefWidth="102.0" text="Enter Port:" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="IPtxtField" layoutX="242.0" layoutY="83.0" onAction="#EnterIP" />
+      <TextField fx:id="PortTextField" layoutX="242.0" layoutY="126.0" onAction="#EnterPort" />
+      <Button fx:id="backToLogBTN" layoutX="242.0" layoutY="179.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="187.0" text="Back To Login Window" />
+      <Label fx:id="connectionLabel" layoutX="3.0" text="Connection To Server" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

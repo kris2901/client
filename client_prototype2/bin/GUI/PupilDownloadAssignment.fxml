@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<AnchorPane prefHeight="336.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PupilDownloadAssignmentController">
+   <children>
+      <Label fx:id="DownloadLabel" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="57.0" prefWidth="728.0" text="Pupil Download Assignment" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+      <ProgressIndicator fx:id="ProgressDownload" layoutX="300.0" layoutY="275.0" /> 
+      <ComboBox fx:id="ChooseCourseCB" layoutX="43.0" layoutY="138.0" onAction="#ChooseCourseCB" prefHeight="31.0" prefWidth="239.0" promptText="Choose Course" />
+      <ComboBox fx:id="ChooseAssignmentCB" layoutX="47.0" layoutY="215.0" onAction="#ChooseAssignment" prefHeight="31.0" prefWidth="239.0" promptText="Choose Assignment" />
+      <Button fx:id="BackToMenuButton" layoutX="334.0" layoutY="274.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="31.0" prefWidth="120.0" text="Back To Menu" />
+      <Hyperlink fx:id="DownloadAssignmentHyperlink" layoutX="47.0" layoutY="275.0" onAction="#DownloadAssignment" prefHeight="29.0" prefWidth="219.0" text="Download Your Assignment" />
+      <Label fx:id="CourseLabel" layoutX="43.0" layoutY="104.0" prefHeight="21.0" prefWidth="204.0" text="Choose Course From The List:" />
+      <Label fx:id="AssignmentLabel" layoutX="43.0" layoutY="186.0" prefHeight="21.0" prefWidth="246.0" text="Choose Assignment From The List:" />
+   </children>
+</AnchorPane>

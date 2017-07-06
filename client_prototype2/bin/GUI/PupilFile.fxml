@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="389.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PupilFileController">
+   <children>
+      <Label fx:id="PupilFileLabel" layoutX="87.0" layoutY="21.0" prefHeight="57.0" prefWidth="249.0" text="Pupil File" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="ChooseCourseLabel" layoutX="41.0" layoutY="101.0" prefHeight="22.0" prefWidth="259.0" text="Choose Course From The List Below:" />
+      <ComboBox fx:id="CourseComboBox" layoutX="41.0" layoutY="140.0" onAction="#ShowCourseList" prefHeight="37.0" prefWidth="175.0" />
+      <Button fx:id="BackButton" layoutX="217.0" layoutY="303.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="37.0" prefWidth="150.0" text="Back To Menu" />
+      <Label fx:id="ChooseLable" layoutX="41.0" layoutY="195.0" text="Choose Your Operation:" />
+      <MenuButton fx:id="ChooseMenuButton" layoutX="41.0" layoutY="232.0" mnemonicParsing="false" onAction="#ChooseOperation" prefHeight="37.0" prefWidth="175.0" text="Choose">
+        <items>
+          <MenuItem id="PupilEvaluationForm" fx:id="showEvaluationFormItem" mnemonicParsing="false" onAction="#ShowEvaluationForm" text="Show Evaluation Form" />
+          <MenuItem id="PupilGradeSheet" fx:id="ShowGradeSheetIten" mnemonicParsing="false" onAction="#ShowGradeSheet" text="Show Grade Sheet" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

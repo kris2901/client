@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="375.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewAllDataController">
+   <children>
+      <Label fx:id="ViewLabel" layoutX="1.0" text="View System Data Window" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="MenuButton" layoutX="223.0" layoutY="125.0" mnemonicParsing="false" onAction="#ViewAllOptions" prefHeight="39.0" prefWidth="181.0" text="Menu:">
+        <items>
+          <MenuItem fx:id="DisplayPupils" mnemonicParsing="false" onAction="#DisplayAllPupil" text="Display Pupils" />
+          <MenuItem fx:id="DisplayParents" mnemonicParsing="false" onAction="#DisplayAllParents" text="Display Parents" />
+            <MenuItem fx:id="DisplayTeachers" mnemonicParsing="false" onAction="#DisplayAllTeachers" text="Display Teachers" />
+            <MenuItem fx:id="DisplayClasses" mnemonicParsing="false" onAction="#DisplayAllClasses" text="Display Classes" />
+            <MenuItem fx:id="DisplayAcademicActivities" mnemonicParsing="false" onAction="#DisplayAllAcademicActivities" text="Display Academic Activities" />
+            <MenuItem fx:id="DisplaySemesters" mnemonicParsing="false" onAction="#DisplayAllSemester" text="Display Semesters" />
+            <MenuItem fx:id="DisplayExeptionalRequests" mnemonicParsing="false" onAction="#DisplayAllExeptionalRequests" text="Display Exeptional Requests" />
+            <MenuItem fx:id="DisplayAssignments" mnemonicParsing="false" onAction="#DisplayAllAssignments" text="Display Assignments" />
+            <MenuItem fx:id="DisplaySecretary" mnemonicParsing="false" onAction="#DisplaySecretaryData" text="Display Secretary" />
+            <MenuItem fx:id="DisplaySystemManager" mnemonicParsing="false" onAction="#DisplaySystemManagerData" text="Display System Manager" />
+        </items>
+      </MenuButton>
+      <Label fx:id="ChooseLabel" layoutX="144.0" layoutY="86.0" prefHeight="31.0" prefWidth="357.0" text="Choose Table For Which You Want To Display Data:" />
+      <Button fx:id="BackButton" layoutX="223.0" layoutY="292.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="39.0" prefWidth="181.0" text="Back To Menu" />
+      <ComboBox fx:id="DataComboBox" layoutX="135.0" layoutY="211.0" onAction="#ViewChosenData" prefHeight="39.0" prefWidth="357.0" promptText="View Chosen Data:" />
+   </children>
+</AnchorPane>

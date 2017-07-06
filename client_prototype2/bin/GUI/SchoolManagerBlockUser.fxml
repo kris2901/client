@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="341.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BlockParentBySchoolManagerController">
+   <children>
+      <Label fx:id="BlockUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="14.0" prefHeight="25.0" prefWidth="378.0" text="Block User Window" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="37.0" />
+         </font>
+      </Label>
+
+      <Label fx:id="EnterPupilIDLabel" layoutX="33.0" layoutY="108.0" text="Enter Pupil ID:" />
+      <TextField fx:id="PupilIDTextField" layoutX="159.0" layoutY="103.0" onAction="#EnterPupilID" />
+      <Button fx:id="BlockParentButton" layoutX="158.0" layoutY="171.0" mnemonicParsing="false" onAction="#BlockParent" text="Block Parent Of Pupil " />
+      <Button fx:id="BackButton" layoutX="322.0" layoutY="283.0" mnemonicParsing="false" onAction="#BackToMenu" text="Back To Menu" />
+      <Button fx:id="FreeParentButton" layoutX="158.0" layoutY="224.0" mnemonicParsing="false" onAction="#FreeParent" prefHeight="31.0" prefWidth="164.0" text="Free Parent Of Pupil" />
+   </children>
+</AnchorPane>

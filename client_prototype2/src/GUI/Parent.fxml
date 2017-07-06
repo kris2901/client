@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="355.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParentController">
+   <children>
+      <Label fx:id="ParentLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="31.0" layoutY="35.0" prefHeight="50.0" prefWidth="424.0" text="Parent Menu" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="315.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font name="Bookman Old Style Bold" size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="BackButton" layoutX="156.0" layoutY="246.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="36.0" prefWidth="80.0" text="Log out" />
+      <ComboBox fx:id="ChooseChildComboBox" layoutX="109.0" layoutY="160.0" onAction="#ChooseChild" prefHeight="44.0" prefWidth="174.0" promptText="Choose Child" />
+      <Label fx:id="ChooseLabel" layoutX="70.0" layoutY="126.0" text="Choose Your Child From The List Bellow:" />
+   </children>
+</AnchorPane>

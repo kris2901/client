@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="671.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportBetweenClassesController">
+   <children>
+      <Label fx:id="ReportLabel1" layoutX="19.0" layoutY="14.0" prefHeight="57.0" prefWidth="715.0" text="Report Between Classes Of Specific Teacher" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="30.0" />
+         </font>
+      </Label>
+      <BarChart fx:id="ReportBarChart" layoutX="20.0" layoutY="276.0" prefHeight="393.0" prefWidth="574.0" title="Report">
+        <xAxis>
+          <CategoryAxis fx:id="SpecificTeacherAxis" label="Classes" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="DifferentClassesAxis" label="Average Grade" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button fx:id="BackButton" layoutX="647.0" layoutY="585.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="32.0" prefWidth="122.0" text="Back To Menu" />
+      <ComboBox fx:id="ChooseComboBox" layoutX="20.0" layoutY="127.0" onAction="#ChooseTeacher" prefHeight="32.0" prefWidth="199.0" promptText="Choose:" />
+      <Label fx:id="ChooseLabel" layoutX="20.0" layoutY="93.0" prefHeight="21.0" prefWidth="275.0" text="Choose Teacher ID From The List Below:" />
+      <TextField fx:id="SemesterTextField" layoutX="20.0" layoutY="212.0" prefHeight="32.0" prefWidth="356.0" />
+      <Label fx:id="SemesterLabel" layoutX="20.0" layoutY="177.0" text="Enter 4 Semesters ID Seperated By ( ):" />
+      <Button fx:id="CheckSemesterButton" layoutX="458.0" layoutY="203.0" mnemonicParsing="false" onAction="#CheckSemesterID" prefHeight="32.0" prefWidth="145.0" text="Check Semester ID" />
+      <Button fx:id="DisplayButton" layoutX="647.0" layoutY="534.0" mnemonicParsing="false" onAction="#DisplayReport" prefHeight="32.0" prefWidth="122.0" text="Display Report" />
+   </children>
+</AnchorPane>
