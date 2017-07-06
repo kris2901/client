@@ -240,10 +240,7 @@ public class AssignPupilToClassController implements IController
 		if ((pupilFLAG == 1) && (classFLAG == 1) && (classID.equals(currClassID)) && (pupilID.equals(currPupilID)))
 		{
 			CheackIfPupilAlreadyAssignedToClass();
-			if(Assigned==0)
-			{
-			loadCoursesInClass();
-			}
+
 		}
 		else
 		{
@@ -564,9 +561,12 @@ public class AssignPupilToClassController implements IController
 		{
 			if (arr.size() != 0)
 			{
-				Assigned=1;
 				new Alert(AlertType.ERROR, "Pupil alrady asiigned to class.", ButtonType.OK)
 						.showAndWait();
+			}
+			else
+			{
+				loadCoursesInClass();
 			}
 		}
 
