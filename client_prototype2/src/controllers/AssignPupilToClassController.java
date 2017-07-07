@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.SchoolClient;
 import interfaces.IController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -115,9 +116,9 @@ public class AssignPupilToClassController implements IController
 	/** The Old class assigned pupils. */
 	private String OldClassAssignedPupils;
 
-	private ArrayList<String> CourseInClass;
-	private ArrayList<String> PreCourses;
-	private ArrayList<String> Pupils;
+	public ArrayList<String> CourseInClass;
+	public ArrayList<String> PreCourses;
+	public ArrayList<String> Pupils;
 
 	/**
 	 * Function That Called When Secretary Presses On SensButton1
@@ -342,8 +343,9 @@ public class AssignPupilToClassController implements IController
 		}
 	}
 
-	public ArrayList<String> checkTest(String ClassID)
+	public ArrayList<String> checkTest(String ClassID) throws IOException
 	{
+		SchoolClient cl= new SchoolClient("localhost",5555);
 		ArrayList<String> PupilID = new ArrayList<>();
 		CourseInClass = new ArrayList<>();
 		PreCourses = new ArrayList<>();
@@ -352,12 +354,12 @@ public class AssignPupilToClassController implements IController
 		ArrayList<String> data1 = new ArrayList<String>();
 		data1.add("load courses in class");
 		data1.add("select");
-		data1.add("class");
+		data1.add("course_in_class");
 		data1.add("classId");
 		data1.add(ClassID);
 		try
 		{
-			Main.client.sendToServer(data1);
+			cl.sendToServer(data1);
 		}
 		catch (IOException e)
 		{
@@ -374,7 +376,7 @@ public class AssignPupilToClassController implements IController
 			data2.add(CourseInClass.get(i));
 			try
 			{
-				Main.client.sendToServer(data2);
+				cl.sendToServer(data2);
 			}
 			catch (IOException e)
 			{
@@ -392,7 +394,7 @@ public class AssignPupilToClassController implements IController
 			data3.add(PreCourses.get(i));
 			try
 			{
-				Main.client.sendToServer(data3);
+				cl.sendToServer(data3);
 			}
 			catch (IOException e)
 			{
