@@ -1,6 +1,10 @@
 package JunitTest;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Assert;
 import org.junit.Test;
 
 import controllers.AssignPupilToClassController;
@@ -9,20 +13,29 @@ public class PreCoursesTest
 {
 
 	@Test
-	public void testPreCourses()
+	public void testPreCoursesOK()
 	{
-		//יצירת אובייקט שבו ניעזר לביצוע הבדיקה
-		AssignPupilToClassController Ineed = new AssignPupilToClassController();
-		AssignPupilToClassController Ihave = new AssignPupilToClassController();
-		AssignPupilToClassController expected = new AssignPupilToClassController();
-		
-		//ביצוע פעולה שאת התוצאות שלה אנחנו נבדוק
-		AssignPupilToClassController Result= null;
-		//השוואת התוצאה למה שציפיתי לקבל (ע"י assert.)
-		
-		//Assert.assertTrue(expected.equals(result));
-	
-		fail("Not yet implemented");
+		String Class_ID = "1111";
+		String Pupil_ID = "666666666";
+		ArrayList<String> result = new ArrayList<>();
+		AssignPupilToClassController res = new AssignPupilToClassController();
+
+		result = res.checkTest(Class_ID);
+
+		Assert.assertTrue(result.contains(Pupil_ID));
+	}
+
+	@Test
+	public void testPreCoursesFAIL()
+	{
+		String Class_ID = "3232";
+		String Pupil_ID = "757575757";
+		ArrayList<String> result = new ArrayList<>();
+		AssignPupilToClassController res = new AssignPupilToClassController();
+
+		result = res.checkTest(Class_ID);
+
+		Assert.assertFalse(result.contains(Pupil_ID));
 	}
 
 }

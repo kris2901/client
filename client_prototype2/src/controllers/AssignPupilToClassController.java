@@ -115,6 +115,10 @@ public class AssignPupilToClassController implements IController
 	/** The Old class assigned pupils. */
 	private String OldClassAssignedPupils;
 
+	private ArrayList<String> CourseInClass;
+	private ArrayList<String> PreCourses;
+	private ArrayList<String> Pupils;
+
 	/**
 	 * Function That Called When Secretary Presses On SensButton1
 	 *
@@ -336,6 +340,86 @@ public class AssignPupilToClassController implements IController
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<String> checkTest(String ClassID)
+	{
+		ArrayList<String> PupilID = new ArrayList<>();
+		CourseInClass = new ArrayList<>();
+		PreCourses = new ArrayList<>();
+		Pupils = new ArrayList<>();
+
+		ArrayList<String> data1 = new ArrayList<String>();
+		data1.add("load courses in class");
+		data1.add("select");
+		data1.add("class");
+		data1.add("classId");
+		data1.add(ClassID);
+		try
+		{
+			Main.client.sendToServer(data1);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		for (int i = 0; i < CourseInClass.size(); i++)
+		{
+			ArrayList<String> data2 = new ArrayList<String>();
+			data2.add("load pre courses");
+			data2.add("select");
+			data2.add("pre_courses");
+			data2.add("course_id");
+			data2.add(CourseInClass.get(i));
+			try
+			{
+				Main.client.sendToServer(data2);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < PreCourses.size(); i++)
+		{
+			ArrayList<String> data3 = new ArrayList<String>();
+			data3.add("load pupils");
+			data3.add("select");
+			data3.add("pupil_in_course");
+			data3.add("courseID");
+			data3.add(PreCourses.get(i));
+			try
+			{
+				Main.client.sendToServer(data3);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		while (Pupils.size() != 0)
+		{
+			String FirstPupil = Pupils.remove(0);
+			int countPupil = 1;
+			for (int i = 0; i < Pupils.size(); i++)
+			{
+				if (Pupils.get(i).equals(FirstPupil))
+				{
+					countPupil++;
+					Pupils.remove(i);
+				}
+			}
+			if (countPupil == PreCourses.size())
+			{
+				PupilID.add(FirstPupil);
+			}
+		}
+
+		
+		return PupilID;
 	}
 
 	/**
@@ -561,8 +645,7 @@ public class AssignPupilToClassController implements IController
 		{
 			if (arr.size() != 0)
 			{
-				new Alert(AlertType.ERROR, "Pupil alrady asiigned to class.", ButtonType.OK)
-						.showAndWait();
+				new Alert(AlertType.ERROR, "Pupil alrady asiigned to class.", ButtonType.OK).showAndWait();
 			}
 			else
 			{
@@ -652,7 +735,7 @@ public class AssignPupilToClassController implements IController
 				new Alert(AlertType.ERROR, "Pupil has not pre-courses for this class.", ButtonType.OK).showAndWait();
 			}
 		}
-		
+
 		if (type.equals("Assign Pupil To Class"))
 		{
 			updateAssignedPupilsInClass();
@@ -685,13 +768,9 @@ public class AssignPupilToClassController implements IController
 			}
 		}
 
-	/*	if (type.equals("UpdateClass"))
-		{
-			//InsertPupilInCourse();
-			UploadListOfOldClass();
-		}*/
+		/*********************************************************FOR JUNIT TEST******************************************************/
 
-	/*	if (type.equals("load Courses of old class"))
+		if (type.equals("load courses in class"))
 		{
 			for (String row : arr)
 			{
@@ -702,12 +781,11 @@ public class AssignPupilToClassController implements IController
 					String[] field = col.split("=");
 					map.put(field[0], field[1]);
 				}
-				OldCoursesID.add(map.get("courseId"));
+				CourseInClass.add(map.get("courseId"));
 			}
-			deletePupilInCourse();
-		}*/
+		}
 
-	/*	if (type.equals("load Assaigned From Old Class"))
+		if (type.equals("load pre courses"))
 		{
 			for (String row : arr)
 			{
@@ -718,9 +796,28 @@ public class AssignPupilToClassController implements IController
 					String[] field = col.split("=");
 					map.put(field[0], field[1]);
 				}
-				OldClassAssignedPupils = map.get("AssignedPupils");
+				PreCourses.add(map.get("pre_course_id"));
 			}
-		}*/
+		}
 
+		if (type.equals("load pupils"))
+		{
+			int grade;
+			for (String row : arr)
+			{
+				String[] cols = row.split(";");
+				HashMap<String, String> map = new HashMap<>();
+				for (String col : cols)
+				{
+					String[] field = col.split("=");
+					map.put(field[0], field[1]);
+				}
+				grade = Integer.parseInt(map.get("gradeInCourse"));
+				if (grade >= 55)
+				{
+					Pupils.add(map.get("userID"));
+				}
+			}
+		}
 	}
 }
