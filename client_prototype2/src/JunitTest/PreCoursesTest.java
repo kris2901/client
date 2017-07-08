@@ -24,7 +24,7 @@ public class PreCoursesTest
 
 		result = res.checkTest(Class_ID);
 
-		Assert.assertTrue("pupil has pre courses",result.contains(Pupil_ID));
+		Assert.assertTrue(result.contains(Pupil_ID));
 	}
 
 	@Test
