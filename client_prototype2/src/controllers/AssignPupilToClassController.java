@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.MySemaphore;
 import application.SchoolClient;
 import interfaces.IController;
 import javafx.event.ActionEvent;
@@ -119,6 +120,15 @@ public class AssignPupilToClassController implements IController
 	public ArrayList<String> CourseInClass;
 	public ArrayList<String> PreCourses;
 	public ArrayList<String> Pupils;
+	private MySemaphore sem;
+
+	private int size1;
+	private int size2;
+	private int size3;
+
+	private int current1;
+	private int current2;
+	private int current3;
 
 	/**
 	 * Function That Called When Secretary Presses On SensButton1
@@ -343,85 +353,150 @@ public class AssignPupilToClassController implements IController
 		}
 	}
 
-	public ArrayList<String> checkTest(String ClassID) throws IOException
+	public void checkTest(String ClassID, MySemaphore semTest) throws IOException
 	{
-		SchoolClient cl= new SchoolClient("localhost",5555);
-		ArrayList<String> PupilID = new ArrayList<>();
-		CourseInClass = new ArrayList<>();
-		PreCourses = new ArrayList<>();
-		Pupils = new ArrayList<>();
+		this.sem = new MySemaphore(1);
+		new Thread(new Runnable()
+		{
 
-		ArrayList<String> data1 = new ArrayList<String>();
-		data1.add("load courses in class");
-		data1.add("select");
-		data1.add("course_in_class");
-		data1.add("classId");
-		data1.add(ClassID);
-		try
-		{
-			cl.sendToServer(data1);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		for (int i = 0; i < CourseInClass.size(); i++)
-		{
-			ArrayList<String> data2 = new ArrayList<String>();
-			data2.add("load pre courses");
-			data2.add("select");
-			data2.add("pre_courses");
-			data2.add("course_id");
-			data2.add(CourseInClass.get(i));
-			try
+			@Override
+			public void run()
 			{
-				cl.sendToServer(data2);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-
-		for (int i = 0; i < PreCourses.size(); i++)
-		{
-			ArrayList<String> data3 = new ArrayList<String>();
-			data3.add("load pupils");
-			data3.add("select");
-			data3.add("pupil_in_course");
-			data3.add("courseID");
-			data3.add(PreCourses.get(i));
-			try
-			{
-				cl.sendToServer(data3);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-
-		while (Pupils.size() != 0)
-		{
-			String FirstPupil = Pupils.remove(0);
-			int countPupil = 1;
-			for (int i = 0; i < Pupils.size(); i++)
-			{
-				if (Pupils.get(i).equals(FirstPupil))
+				try
 				{
-					countPupil++;
-					Pupils.remove(i);
+					sem.acquire();
 				}
-			}
-			if (countPupil == PreCourses.size())
-			{
-				PupilID.add(FirstPupil);
-			}
-		}
+				catch (InterruptedException e2)
+				{
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 
-		
-		return PupilID;
+				SchoolClient cl = null;
+				try
+				{
+					cl = new SchoolClient("localhost", 5555);
+				}
+				catch (IOException e2)
+				{
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+					return;
+				}
+				ArrayList<String> PupilID = new ArrayList<>();
+				CourseInClass = new ArrayList<>();
+				PreCourses = new ArrayList<>();
+				Pupils = new ArrayList<>();
+
+				ArrayList<String> data1 = new ArrayList<String>();
+				data1.add("load courses in class");
+				data1.add("select");
+				data1.add("course_in_class");
+				data1.add("classId");
+				data1.add(ClassID);
+				try
+				{
+					cl.sendToServer(data1);
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				
+				try
+				{
+					sem.acquire();
+				}
+				catch (InterruptedException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				size2 = CourseInClass.size();
+				current2 = 0;
+
+				for (int i = 0; i < CourseInClass.size(); i++)
+				{
+					ArrayList<String> data2 = new ArrayList<String>();
+					data2.add("load pre courses");
+					data2.add("select");
+					data2.add("pre_courses");
+					data2.add("course_id");
+					data2.add(CourseInClass.get(i));
+					try
+					{
+						cl.sendToServer(data2);
+					}
+					catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+				}
+
+				try
+				{
+					sem.acquire();
+				}
+				catch (InterruptedException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				size3 = PreCourses.size();
+				current3 = 0;
+
+				for (int i = 0; i < PreCourses.size(); i++)
+				{
+					ArrayList<String> data3 = new ArrayList<String>();
+					data3.add("load pupils");
+					data3.add("select");
+					data3.add("pupil_in_course");
+					data3.add("courseID");
+					data3.add(PreCourses.get(i));
+					try
+					{
+						cl.sendToServer(data3);
+					}
+					catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+				}
+
+				try
+				{
+					sem.acquire();
+					sem.release();
+				}
+				catch (InterruptedException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				while (Pupils.size() != 0)
+				{
+					String FirstPupil = Pupils.remove(0);
+					int countPupil = 1;
+					for (int i = 0; i < Pupils.size(); i++)
+					{
+						if (Pupils.get(i).equals(FirstPupil))
+						{
+							countPupil++;
+							Pupils.remove(i);
+						}
+					}
+					if (countPupil == PreCourses.size())
+					{
+						PupilID.add(FirstPupil);
+					}
+				}
+
+				semTest.setResult(PupilID);
+				semTest.release(4);
+
+			}
+		}).start();
 	}
 
 	/**
@@ -785,6 +860,7 @@ public class AssignPupilToClassController implements IController
 				}
 				CourseInClass.add(map.get("courseId"));
 			}
+			sem.release();
 		}
 
 		if (type.equals("load pre courses"))
@@ -800,6 +876,9 @@ public class AssignPupilToClassController implements IController
 				}
 				PreCourses.add(map.get("pre_course_id"));
 			}
+			current2++;
+			if (current2 == size2)
+				sem.release();
 		}
 
 		if (type.equals("load pupils"))
@@ -820,6 +899,9 @@ public class AssignPupilToClassController implements IController
 					Pupils.add(map.get("userID"));
 				}
 			}
+			current3++;
+			if (current3 == size3)
+				sem.release();
 		}
 	}
 }
